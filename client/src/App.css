@@ -1,0 +1,55 @@
+body {
+    width: 100vw;
+    min-height: 100vh;
+    padding: 15px;
+    background-image: linear-gradient( #606c88, #3f4c6b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.head {
+    width: 100%;
+    background-color: #0F5298;
+    color: aliceblue;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.appContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 350px;
+    min-height: 500px;
+    border-radius: 8px;
+    box-shadow: 10px 10px 10px 5px rgb(48, 48, 82);
+    position: relative;
+}
+
+.icons {
+    font-size: 28px;
+    cursor: pointer;
+    color: royalblue
+}
+
+.input {
+    border: none;
+    outline: none;
+}
+
+.addSec {
+    border-bottom: gray solid 2px;
+    margin-bottom: 20px;
+}
+
+#alert {
+    position: absolute;
+    top: 59px;
+    height: 40px;
+    line-height: 1;
+    box-shadow: 2px 2px 5px 1.5px gray;
+}
