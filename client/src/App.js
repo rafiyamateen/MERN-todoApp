@@ -13,7 +13,7 @@ const App = () => {
 
   const [todoList, setTodoList] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:1000/todos')
+    axios.get('/todos')
       .then(res => setTodoList(res.data))
       .catch(e => console.log('Failed to get todos list. Error: ', e))
   }, [])
@@ -31,9 +31,9 @@ const App = () => {
         const str = input.todo,
           title = str[0].toUpperCase() + str.slice(1),
           newTodo = { todo: title }
-        axios.post('http://localhost:1000/add', newTodo)
+        axios.post('/add', newTodo)
           .then(() => {
-            axios.get('http://localhost:1000/todos')
+            axios.get('/todos')
               .then(res => setTodoList(res.data))
               .catch(e => console.log('Failed to get todos list. Error: ', e))
             setInput({ todo: '' })
@@ -53,7 +53,7 @@ const App = () => {
     },
 
     deleteItem = (id) => {
-      axios.delete(`http://localhost:1000/delete/${id}`)
+      axios.delete(`/delete/${id}`)
         .then(() => {
           const filteredList = todoList.filter(todo => todo._id !== id)
           setTodoList(filteredList)
@@ -65,7 +65,7 @@ const App = () => {
       if (input.todo) {
         const string = toEdit.todo,
           firstCap = string[0].toUpperCase() + string.slice(1)
-        axios.put(`http://localhost:1000/update/${toEdit._id}`, { todo: firstCap })
+        axios.put(`/update/${toEdit._id}`, { todo: firstCap })
           .then(() => {
             const updateItem = todoList.map(todoItem => (todoItem._id === toEdit._id ? { ...todoItem, todo: firstCap } : todoItem))//, id: toEdit.id 
             setTodoList(updateItem)

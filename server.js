@@ -5,8 +5,8 @@ const express = require('express'),
   router = require('./routes')
 
 dotenv.config()
-
-const db_url = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASSWORD}@cluster0.idn3u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+const PORT = process.env.PORT,
+  db_url = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASSWORD}@cluster0.idn3u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
 mongoose.connect(db_url, {
   useNewUrlParser: true,
@@ -16,8 +16,9 @@ mongoose.connect(db_url, {
   .then(() => console.log('Database connected!'))
   .catch(error => { console.log('Database connection failed. Error: ', error) })
 
-if (process.env.NODE_ENV === 'poduction') {
-  app.use(express.static('client/build'))
-}
+app.use(express.static('public'))
 app.use(router)
-app.listen(process.env.PORT,()=>{console.log(`Server started on port ${process.env.PORT}!`)})
+app.get('*', (req, res) => {
+  res.sendFile('public')
+})
+app.listen(PORT, () => { console.log(`Server started on port ${PORT}!`) })
