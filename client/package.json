@@ -1,5 +1,5 @@
 {
-  "name": "mongodb-practice",
+  "name": "mern-todo-app",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3050",
